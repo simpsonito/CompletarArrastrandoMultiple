@@ -243,17 +243,12 @@ function HandleDragStop(){
 function revisar(){
     if(contestadas == total){
         var mensaje = "";
-        switch (buenas) {
-            case 15:
-                mensaje = "¡Excelente!";
-                break;
-            case 14:
-            case 13:
-            case 12:
-                mensaje = "¡Bien!";
-                break;
-            default://Cualquier otro (5 ó menos)
-                mensaje = "Revisa nuevamente el tema.";
+        if(buenas === total){
+            mensaje = "¡Excelente!";
+        } else if(buenas === total-1){
+            mensaje = "¡Bien!";
+        } else {
+            mensaje = "Revisa nuevamente el tema.";
         }
         //console.log("Terminó_todo");
         retroalimentar(mensaje+' Obtuviste '+ buenas + " de " + total +'.<br /><input id="botonReiniciar" type="button" value="Otra vez" onClick="reiniciar()">');
